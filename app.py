@@ -18,7 +18,11 @@ def video_frame_callback(frame):
     return frame
 
 
-ctx = webrtc_streamer(key="example", video_frame_callback=video_frame_callback)
+ctx = webrtc_streamer(
+    key="example",
+    video_frame_callback=video_frame_callback,
+    rtc_configuration={"iceServers": [{"urls": ["stun:stun.l.google.com:19302"]}]},
+)
 
 fig_place = st.empty()
 fig, ax = plt.subplots(1, 1)
